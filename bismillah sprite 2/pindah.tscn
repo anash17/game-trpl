@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://pindah.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 13.2575 )
+
+[node name="pindah" type="Area2D" index="0"]
+
+position = Vector2( 584.268, 95.6177 )
+scale = Vector2( 0.301759, 1.95255 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+world_scene = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( -9.50007, -7.59887 )
+scale = Vector2( 1.73077, 3.04607 )
+shape = SubResource( 1 )
+
+

@@ -1,0 +1,129 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://944484fd-31a0-444a-9b92-9a58d70e2dcd.jpg" type="Texture" id=1]
+[ext_resource path="res://pindah.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://lantai.tres" type="TileSet" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 20.5587 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30.4992, 30.5003 )
+
+[node name="arena" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+position = Vector2( 1519.83, 76.1949 )
+scale = Vector2( 2.76052, 4.23694 )
+texture = ExtResource( 1 )
+
+[node name="skor" type="Label" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 288.0
+margin_top = 60.0
+margin_right = 309.0
+margin_bottom = 78.0
+rect_scale = Vector2( 3, 3 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_constants", "custom_fonts" ]
+
+[node name="jatuh" type="Node2D" parent="." index="2"]
+
+editor/display_folded = true
+position = Vector2( 320, 160 )
+
+[node name="Area2D" type="Area2D" parent="jatuh" index="0"]
+
+position = Vector2( -305.996, 172.943 )
+scale = Vector2( 0.508623, 0.360232 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jatuh/Area2D" index="0"]
+
+position = Vector2( -4.14208, 21.9452 )
+scale = Vector2( 3.58032, 1 )
+shape = SubResource( 1 )
+
+[node name="pindah" parent="." index="3" instance=ExtResource( 2 )]
+
+position = Vector2( 2271.52, 192 )
+world_scene = "res://arena2.tscn"
+
+[node name="player" parent="." index="4" instance=ExtResource( 3 )]
+
+position = Vector2( 78.3862, 151.154 )
+
+[node name="TileMap" type="TileMap" parent="." index="5"]
+
+position = Vector2( 320, 160 )
+mode = 0
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -65501, 1, 0, -65500, 1, 0, -65499, 1, 0, -65498, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 35, 13, 0, 36, 14, 0, 37, 13, 0, 38, 14, 0, 65540, 13, 0, 65541, 14, 0, 65542, 13, 0, 65543, 14, 0, 65544, 14, 0, 65545, 13, 0, 65546, 14, 0, 65547, 13, 0, 65548, 14, 0, 65549, 13, 0, 65550, 14, 0, 65551, 13, 0, 65552, 14, 0, 65571, 13, 0, 65572, 14, 0, 65573, 13, 0, 65574, 14, 0, 131076, 13, 0, 131077, 14, 0, 131078, 13, 0, 131079, 14, 0, 131080, 14, 0, 131081, 13, 0, 131082, 14, 0, 131083, 13, 0, 131084, 14, 0, 131085, 13, 0, 131086, 14, 0, 131087, 13, 0, 131088, 14, 0, 131093, 1, 0, 131094, 1, 0, 131095, 1, 0, 131096, 1, 0, 131097, 1, 0, 131098, 1, 0, 131099, 1, 0, 131100, 1, 0, 131101, 1, 0, 131102, 1, 0, 131103, 1, 0, 131104, 1, 0, 131105, 1, 0, 131106, 1, 0, 131107, 13, 0, 131108, 14, 0, 131109, 13, 0, 131110, 14, 0, 131113, 1, 0, 131114, 1, 0, 262135, 0, 0, 262136, 1, 0, 262137, 1, 0, 262138, 1, 0, 262139, 1, 0, 262140, 1, 0, 262141, 1, 0, 262142, 1, 0, 262143, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 13, 0, 196613, 14, 0, 196614, 13, 0, 196615, 14, 0, 196616, 14, 0, 196617, 13, 0, 196618, 14, 0, 196619, 13, 0, 196620, 14, 0, 196621, 13, 0, 196622, 14, 0, 196623, 13, 0, 196624, 14, 0, 196629, 13, 0, 196630, 14, 0, 196631, 13, 0, 196632, 14, 0, 196633, 13, 0, 196634, 14, 0, 196635, 13, 0, 196636, 14, 0, 196637, 13, 0, 196638, 14, 0, 196639, 13, 0, 196640, 14, 0, 196641, 13, 0, 196642, 14, 0, 196643, 13, 0, 196644, 14, 0, 196645, 13, 0, 196646, 14, 0, 196649, 13, 0, 196650, 14, 0, 196653, 1, 0, 196654, 1, 0, 196655, 1, 0, 196656, 1, 0, 196657, 1, 0, 196662, 1, 0, 196663, 1, 0, 196664, 1, 0, 196665, 1, 0, 196666, 1, 0, 196667, 1, 0, 196668, 1, 0, 196669, 1, 0, 327671, 4, 0, 327672, 5, 0, 327673, 6, 0, 327674, 7, 0, 327675, 8, 0, 327676, 13, 0, 327677, 14, 0, 327678, 13, 0, 327679, 14, 0, 262144, 13, 0, 262145, 14, 0, 262146, 13, 0, 262147, 14, 0, 262148, 13, 0, 262149, 14, 0, 262150, 13, 0, 262151, 14, 0, 262152, 14, 0, 262153, 13, 0, 262154, 14, 0, 262155, 13, 0, 262156, 14, 0, 262157, 13, 0, 262158, 14, 0, 262159, 13, 0, 262160, 14, 0, 262165, 13, 0, 262166, 14, 0, 262167, 13, 0, 262168, 14, 0, 262169, 13, 0, 262170, 14, 0, 262171, 13, 0, 262172, 14, 0, 262173, 13, 0, 262174, 14, 0, 262175, 13, 0, 262176, 14, 0, 262177, 13, 0, 262178, 14, 0, 262179, 13, 0, 262180, 14, 0, 262181, 13, 0, 262182, 14, 0, 262185, 13, 0, 262186, 14, 0, 262189, 13, 0, 262190, 14, 0, 262191, 13, 0, 262192, 14, 0, 262193, 13, 0, 262198, 13, 0, 262199, 14, 0, 262200, 13, 0, 262201, 14, 0, 262202, 13, 0, 262203, 14, 0, 262204, 13, 0, 262205, 14, 0, 393207, 9, 0, 393208, 10, 0, 393209, 11, 0, 393210, 12, 0, 393211, 13, 0, 393212, 14, 0, 393213, 13, 0, 393214, 14, 0, 393215, 13, 0, 327680, 14, 0, 327681, 13, 0, 327682, 14, 0, 327683, 13, 0, 327684, 14, 0, 327685, 13, 0, 327686, 14, 0, 327687, 13, 0, 327688, 14, 0, 327689, 13, 0, 327690, 14, 0, 327691, 13, 0, 327692, 14, 0, 327693, 13, 0, 327694, 14, 0, 327695, 13, 0, 327696, 14, 0, 327701, 13, 0, 327702, 14, 0, 327703, 13, 0, 327704, 14, 0, 327705, 13, 0, 327706, 14, 0, 327707, 13, 0, 327708, 14, 0, 327709, 13, 0, 327710, 14, 0, 327711, 13, 0, 327712, 14, 0, 327713, 13, 0, 327714, 14, 0, 327715, 13, 0, 327716, 14, 0, 327717, 13, 0, 327718, 14, 0, 327721, 13, 0, 327722, 14, 0, 327725, 13, 0, 327726, 14, 0, 327727, 13, 0, 327728, 14, 0, 327729, 13, 0, 327734, 13, 0, 327735, 14, 0, 327736, 13, 0, 327737, 14, 0, 327738, 13, 0, 327739, 14, 0, 327740, 13, 0, 327741, 14, 0 )
+_sections_unfolded = [ "Cell" ]
+
+[node name="benar" type="Sprite" parent="." index="6"]
+
+position = Vector2( 213.256, 93.2994 )
+texture = ExtResource( 5 )
+
+[node name="jwbbenar" type="Area2D" parent="benar" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="benar/jwbbenar" index="0"]
+
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="jatuh/Area2D" to="player" method="_on_Area2D_body_entered"]
+
+[connection signal="body_entered" from="benar/jwbbenar" to="player" method="_on_jwbbenar_body_entered"]
+
+

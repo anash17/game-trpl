@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://pindah.tscn" type="PackedScene" id=2]
+[ext_resource path="res://lantai.tres" type="TileSet" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 34.9574, 32.8977 )
+
+[node name="arena2" type="Node2D"]
+
+position = Vector2( 0, 39.7611 )
+
+[node name="player" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 32, 156.772 )
+
+[node name="pindah" parent="player" index="2" instance=ExtResource( 2 )]
+
+[node name="pindah2" parent="player" index="3" instance=ExtResource( 2 )]
+
+[node name="TileMap" type="TileMap" parent="." index="1"]
+
+mode = 0
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 262154, 1, 0, 262155, 1, 0, 262156, 1, 0, 262160, 1, 0, 262161, 1, 0, 262162, 1, 0, 262163, 1, 0, 327690, 14, 0, 327691, 13, 0, 327692, 14, 0, 327696, 13, 0, 327697, 14, 0, 327698, 13, 0, 327699, 14, 0, 393226, 14, 0, 393227, 13, 0, 393228, 14, 0, 393232, 13, 0, 393233, 14, 0, 393234, 13, 0, 393235, 14, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 14, 0, 458763, 13, 0, 458764, 14, 0, 458768, 13, 0, 458769, 14, 0, 458770, 13, 0, 458771, 14, 0, 524288, 13, 0, 524289, 14, 0, 524290, 13, 0, 524294, 14, 0, 524295, 13, 0, 524296, 14, 0, 524297, 13, 0, 524298, 14, 0, 524299, 13, 0, 524300, 14, 0, 524304, 13, 0, 524305, 14, 0, 524306, 13, 0, 524307, 14, 0, 589824, 13, 0, 589825, 14, 0, 589826, 13, 0, 589830, 14, 0, 589831, 13, 0, 589832, 14, 0, 589833, 13, 0, 589834, 14, 0, 589835, 13, 0, 589836, 14, 0, 589840, 13, 0, 589841, 14, 0, 589842, 13, 0, 589843, 14, 0 )
+_sections_unfolded = [ "Cell" ]
+
+[node name="pindah" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 625.924, 66.0809 )
+world_scene = "res://arena.tscn"
+
+[node name="jatuh" type="Node2D" parent="." index="3"]
+
+[node name="garis1" type="Area2D" parent="jatuh" index="0"]
+
+position = Vector2( 142.73, 298.556 )
+scale = Vector2( 1.3422, 0.190372 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jatuh/garis1" index="0"]
+
+position = Vector2( 0.814419, 10.4747 )
+shape = SubResource( 1 )
+
+[node name="jatuh2" type="Node2D" parent="." index="4"]
+
+[node name="garis2" type="Area2D" parent="jatuh2" index="0"]
+
+position = Vector2( 142.73, 298.556 )
+scale = Vector2( 1.3422, 0.190372 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jatuh2/garis2" index="0"]
+
+position = Vector2( 239.6, -31.9999 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="jatuh/garis1" to="player" method="_on_garis1_body_entered"]
+
+[connection signal="body_entered" from="jatuh2/garis2" to="player" method="_on_garis2_body_entered"]
+
+
